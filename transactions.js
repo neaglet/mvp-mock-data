@@ -35,9 +35,9 @@ for (let i = 0; i < itemCount; i++) {
     id: faker.random.uuid(),
     number: faker.finance.account(),
     amount: faker.random.number(),
-    status: 'Complete' | 'Pending',
+    status: Math.random() < 0.5 ? 'Complete' : 'Pending',
     date: Math.random() < 0.5 ? faker.date.past() : faker.date.recent(),
-    category: 'Entertainment',
+    category: categories[Math.floor(Math.random() * categories.length)],
     latitude: faker.address.latitude(),
     longitude: faker.address.longitude(),
     address: `${faker.address.streetAddress()}, ${faker.address.city()}, ${faker.address.county()} ${faker.address.zipCode()}`
