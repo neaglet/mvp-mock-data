@@ -34,7 +34,10 @@ for (let i = 0; i < itemCount; i++) {
   const transaction = {
     id: faker.random.uuid(),
     number: faker.finance.account(),
-    amount: faker.random.number(),
+    amount:
+      Math.random() < 0.8
+        ? -Math.abs(faker.random.number())
+        : faker.random.number(),
     status: Math.random() < 0.5 ? 'Complete' : 'Pending',
     date: Math.random() < 0.5 ? faker.date.past() : faker.date.recent(),
     category: categories[Math.floor(Math.random() * categories.length)],
