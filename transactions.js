@@ -39,7 +39,7 @@ for (let i = 0; i < itemCount; i++) {
         ? -Math.abs(faker.random.number())
         : faker.random.number(),
     status: Math.random() < 0.5 ? 'Complete' : 'Pending',
-    date: Math.random() < 0.5 ? faker.date.past() : faker.date.recent(),
+    date: faker.date.past(0.1),
     category: categories[Math.floor(Math.random() * categories.length)],
     latitude: faker.address.latitude(),
     longitude: faker.address.longitude(),
