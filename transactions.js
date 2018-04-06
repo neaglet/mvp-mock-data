@@ -48,13 +48,13 @@ for (let i = 0; i < itemCount; i++) {
       id: faker.random.uuid(),
       firstName: faker.name.firstName(),
       lastName: faker.name.lastName(),
-      image: faker.image.avatar()
+      image: Math.random() < 0.5 ? faker.image.avatar() : null
     };
   } else {
     transaction.merchant = {
       id: faker.finance.account(),
       name: faker.company.companyName(),
-      logo: faker.image.image(),
+      logo: Math.random() < 0.5 ? faker.internet.avatar() : null,
       website: faker.internet.url()
     };
   }
