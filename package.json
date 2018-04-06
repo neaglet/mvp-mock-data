@@ -1,0 +1,11 @@
+{
+  "name": "mvp-mock-data",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:neaglet/mvp-mock-data.git",
+  "license": "MIT",
+  "dependencies": {
+    "faker": "^4.1.0",
+    "fs": "^0.0.1-security"
+  }
+}
