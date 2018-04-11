@@ -1,5 +1,6 @@
 const express = require('express');
 const fs = require('fs');
+const transactions = require('./transactions');
 
 // you can pass the parameter in the command line. e.g. node static_server.js 3000
 const port = process.env.PORT || 8080;
@@ -17,4 +18,10 @@ app.listen(port, () =>
   console.log('Example app listening on port ' + port + '!'),
 );
 
-// transactions.addNewTransaction();
+function foo() {
+  console.log('function is being called');
+}
+
+setInterval(() => {
+  transactions.addNewTransaction();
+}, 30000);
