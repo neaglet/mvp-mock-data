@@ -2,7 +2,7 @@ const express = require('express');
 const fs = require('fs');
 
 // you can pass the parameter in the command line. e.g. node static_server.js 3000
-const port = 8080;
+const port = process.env.PORT || 8080;
 const app = express();
 
 app.get('/transactions', (req, res) => {
