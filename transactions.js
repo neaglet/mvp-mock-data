@@ -30,7 +30,7 @@ const obj = {
   },
 };
 
-const genTransaction = () => {
+const genTransaction = i => {
   const transaction = {
     id: faker.random.uuid(),
     number: faker.finance.account(),
@@ -40,7 +40,7 @@ const genTransaction = () => {
         : faker.random.number()) / 100,
     ),
     status: Math.random() < 0.5 ? 'Complete' : 'Pending',
-    date: faker.date.recent(),
+    date: i < 16 ? faker.date.recent() : faker.date.past(0.1),
     category: categories[Math.floor(Math.random() * categories.length)],
     latitude: faker.address.latitude(),
     longitude: faker.address.longitude(),
@@ -67,7 +67,7 @@ const genTransaction = () => {
 };
 
 for (let i = 0; i < itemCount; i++) {
-  const transaction = genTransaction();
+  const transaction = genTransaction(i);
 
   obj.data.push(transaction);
 }
