@@ -13,7 +13,7 @@ const categories = [
   'Holidays',
   'Shopping',
   'General',
-  'Expenses'
+  'Expenses',
 ];
 
 const obj = {
@@ -21,29 +21,30 @@ const obj = {
     page: '1',
     count: itemCount,
     totalCount: itemCount,
-    cursor: 'e1aa2c04-85c9-4583-9b61-801bb4dfbc9b'
+    cursor: 'e1aa2c04-85c9-4583-9b61-801bb4dfbc9b',
   },
   data: [],
   error: {
     code: '200',
-    message: 'Success'
-  }
+    message: 'Success',
+  },
 };
 
-for (let i = 0; i < itemCount; i++) {
+const genTransaction = () => {
   const transaction = {
     id: faker.random.uuid(),
     number: faker.finance.account(),
-    amount:
-      Math.random() < 0.8
+    amount: Math.trunc(
+      (Math.random() < 0.8
         ? -Math.abs(faker.random.number())
-        : faker.random.number(),
+        : faker.random.number()) / 100,
+    ),
     status: Math.random() < 0.5 ? 'Complete' : 'Pending',
-    date: faker.date.past(0.1),
+    date: faker.date.recent,
     category: categories[Math.floor(Math.random() * categories.length)],
     latitude: faker.address.latitude(),
     longitude: faker.address.longitude(),
-    address: `${faker.address.streetAddress()}, ${faker.address.city()}, ${faker.address.county()} ${faker.address.zipCode()}`
+    address: `${faker.address.streetAddress()}, ${faker.address.city()}, ${faker.address.county()} ${faker.address.zipCode()}`,
   };
 
   if (Math.random() < 0.5) {
@@ -51,16 +52,22 @@ for (let i = 0; i < itemCount; i++) {
       id: faker.random.uuid(),
       firstName: faker.name.firstName(),
       lastName: faker.name.lastName(),
-      image: Math.random() < 0.5 ? faker.image.avatar() : null
+      image: Math.random() < 0.5 ? faker.image.avatar() : null,
     };
   } else {
     transaction.merchant = {
       id: faker.finance.account(),
       name: faker.company.companyName(),
       logo: Math.random() < 0.5 ? faker.internet.avatar() : null,
-      website: faker.internet.url()
+      website: faker.internet.url(),
     };
   }
+
+  return transaction;
+};
+
+for (let i = 0; i < itemCount; i++) {
+  const transaction = genTransaction();
 
   obj.data.push(transaction);
 }
@@ -68,5 +75,5 @@ for (let i = 0; i < itemCount; i++) {
 fs.writeFileSync(
   './Transactions/transactions.json',
   JSON.stringify(obj),
-  'utf8'
+  'utf8',
 );
