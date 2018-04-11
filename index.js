@@ -2,6 +2,7 @@ const http = require('http');
 const url = require('url');
 const fs = require('fs');
 const path = require('path');
+const transactions = require('./transactions.js');
 // you can pass the parameter in the command line. e.g. node static_server.js 3000
 const port = process.argv[2] || 9000;
 http
@@ -56,3 +57,5 @@ http
   })
   .listen(parseInt(port));
 console.log(`Server listening on port ${port}`);
+
+transactions.addNewTransaction();
