@@ -5,6 +5,7 @@
   "repository": "git@github.com:neaglet/mvp-mock-data.git",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.16.3",
     "faker": "^4.1.0",
     "fs": "^0.0.1-security"
   }
