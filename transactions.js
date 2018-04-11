@@ -40,7 +40,7 @@ const genTransaction = () => {
         : faker.random.number()) / 100,
     ),
     status: Math.random() < 0.5 ? 'Complete' : 'Pending',
-    date: faker.date.recent,
+    date: faker.date.recent(),
     category: categories[Math.floor(Math.random() * categories.length)],
     latitude: faker.address.latitude(),
     longitude: faker.address.longitude(),
